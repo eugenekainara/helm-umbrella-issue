@@ -12,7 +12,7 @@ metadata:
   labels:
     {{- include "dep2.labels" . | nindent 4 }}
   {{/*  // Here I'm try to merge global & unique for chart annotations*/}}
-  {{- with merge .Values.global.ingress.annotations .Values.ingress.annotations }}
+  {{- with merge dict .Values.global.ingress.annotations .Values.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
   {{- end }}
